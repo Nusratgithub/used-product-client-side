@@ -1,4 +1,3 @@
-import axios from 'axios'
 import React from 'react';
 import { useEffect } from 'react';
 import { useState } from 'react';
@@ -16,7 +15,7 @@ const Products = () => {
   // console.log(productData)
 
   useEffect(() => {
-    fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/allProducts')
+    fetch('https://b612-used-products-resale-server-side-blush.vercel.app/allProducts')
       .then(res => res.json())
       .then(data => setAllProducts(data.data)
       )

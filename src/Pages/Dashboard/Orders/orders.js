@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
 import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal'
-import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
@@ -14,10 +13,10 @@ const MyOrder = () => {
   const [deletedOrder, setDeletedOrder] = useState(null)
 
   useEffect(() => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/orders?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/orders?email=${user?.email}`, {
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      // }
     })
       .then(res => {
         if (res.status === 401 || res.status === 403) {
@@ -38,11 +37,11 @@ const MyOrder = () => {
     setDeletedOrder(null)
   }
   const handleOrderDelete = orderId => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/orders/${orderId}`, {
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/orders/${orderId}`, {
       method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      // }
     })
       .then(res => res.json())
       .then(data => {

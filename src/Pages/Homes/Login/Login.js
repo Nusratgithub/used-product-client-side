@@ -1,39 +1,36 @@
 import { GoogleAuthProvider } from 'firebase/auth';
 import React, { useContext, useState } from 'react';
 import { FaGoogle,FaGithub } from 'react-icons/fa';
-import { Link,useLocation, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
-import useToken from '../../../Hooks/useToken';
 import { toast } from 'react-toastify';
 import { useForm } from 'react-hook-form';
 
 const Login = () => {
   const { providerLogin } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
-  const { signIn,loading,setLoading } = useContext(AuthContext);
+  const { signIn,setLoading } = useContext(AuthContext);
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const [error, setError] = useState('');
-  const [loginUserEmail, setLoginUserEmail] = useState('')
   const location = useLocation();
-  const [token] = useToken(loginUserEmail);
   const from = location.state?.from?.pathname || '/'
 
-  if (token) {
-    navigate('/')
-  }
 
   const handleLogin = data => {
     setError('')
     signIn(data.email, data.password)
       .then(result => {
-        setLoginUserEmail(data.email)
-        toast.success('User Login Successfully!', { autoClose: 400 })
-        setLoading(false)
+        const user = result.user;
+        console.log(user);
+        setError('');
+        navigate(from, { replace: true })
       })
-      .catch(error => {
-        setError(error.message)
+      .then(error => console.log(error))
+      .catch(err => {
+        toast.error(err.message, { autoClose: '500' })
       })
+
   }
 
 
@@ -41,7 +38,7 @@ const Login = () => {
     providerLogin(googleProvider)
       .then(result => {
         const user = result.user;
-        // console.log(user);
+        console.log(user);
         setError('');
         navigate('/')
       })

@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 
 const ReportProductModal = ({ reportProduct, setReportProduct }) => {
   const navigate = useNavigate();
-  const { user, loading, setLoading } = useContext(AuthContext)
+  const { user, loading, } = useContext(AuthContext)
   const { _id, name, image, category } = reportProduct
 
   const handleReportProduct = e => {
@@ -24,11 +24,11 @@ const ReportProductModal = ({ reportProduct, setReportProduct }) => {
       userEmail: user?.email
     }
 
-    fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/reports', {
+    fetch('https://b612-used-products-resale-server-side-blush.vercel.app/reports', {
       method: "POST",
       headers: {
         'content-type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        // authorization: `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(reportProductData)
     })

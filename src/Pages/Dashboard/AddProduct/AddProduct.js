@@ -29,11 +29,11 @@ const AddProduct = () => {
     }
     // console.log(products);
 
-    fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/products', {
+    fetch('https://b612-used-products-resale-server-side-blush.vercel.app/products', {
       method: 'POST',
       headers: {
         'content-type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        // authorization: `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(products)
     })

@@ -15,11 +15,11 @@ const AddCategory = () => {
       category: data.name
     }
     // Save doctor information to tha database
-    fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/category', {
+    fetch('https://b612-used-products-resale-server-side-blush.vercel.app/category', {
       method: "POST",
       headers: {
         'content-type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        // authorization: `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(addCategory)
     })

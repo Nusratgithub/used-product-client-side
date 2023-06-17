@@ -12,17 +12,17 @@ const AllBuyersList = () => {
   const { data: buyers = [], isLoading, refetch } = useQuery({
     queryKey: ['buyers'],
     queryFn: async () => {
-      const res = await fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/buyers', {
-        headers: {
-          authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-        }
+      const res = await fetch('https://b612-used-products-resale-server-side-blush.vercel.app/buyers', {
+        // headers: {
+        //   authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+        // }
       })
       const data = await res.json()
       return data
     }
   })
 
-  const allBuyers = buyers.data
+  const allBuyers = buyers
 
   if (isLoading) {
     return <LoadingSpinner />
@@ -32,11 +32,11 @@ const AllBuyersList = () => {
     setDeletedUser(null)
   }
   const handleUserVerified = email => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/users/status-update/${email}`, {
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/users/status-update/${email}`, {
       method: 'PUT',
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`,
-      }
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('accessToken')}`,
+      // }
     })
       .then(res => res.json())
       .then(data => {
@@ -48,11 +48,11 @@ const AllBuyersList = () => {
   }
 
   const handleUserDelete = buyerId => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/buyers/${buyerId}`, {
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/buyers/${buyerId}`, {
       method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      // }
     })
       .then(res => res.json())
       .then(data => {

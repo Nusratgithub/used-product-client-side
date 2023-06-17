@@ -8,18 +8,18 @@ const AllUsers = () => {
   const { data: users = [], refetch } = useQuery({
     queryKey: ['users'],
     queryFn: async () => {
-      const res = await fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/users');
+      const res = await fetch('https://b612-used-products-resale-server-side-blush.vercel.app/users');
       const data = await res.json();
       return data;
     }
   });
 
   const handleMakeAdmin = id => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/users/admin/${id}`, {
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/users/admin/${id}`, {
       method: 'PUT',
-      headers: {
-        authorization: `bearer ${localStorage.getItem('accessToken')}`
-      }
+      // headers: {
+      //   authorization: `bearer ${localStorage.getItem('accessToken')}`
+      // }
     })
       .then(res => res.json())
       .then(data => {

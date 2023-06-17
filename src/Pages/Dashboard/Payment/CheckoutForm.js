@@ -16,11 +16,11 @@ const CheckoutForm = ({ booking }) => {
 
   useEffect(() => {
     // Create PaymentIntent as soon as the page loads
-    fetch("https://b612-used-products-resale-server-side-zeta.vercel.app/create-payment-intent", {
+    fetch("https://b612-used-products-resale-server-side-blush.vercel.app/create-payment-intent", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
-        authorization: `bearer ${localStorage.getItem('accessToken')}`
+        // authorization: `bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify({ price }),
     })
@@ -84,11 +84,11 @@ const CheckoutForm = ({ booking }) => {
         orderId: _id,
         productId,
       }
-      fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/payments', {
+      fetch('https://b612-used-products-resale-server-side-blush.vercel.app/payments', {
         method: 'POST',
         headers: {
           'content-type': 'application/json',
-          authorization: `bearer ${localStorage.getItem('accessToken')}`
+          // authorization: `bearer ${localStorage.getItem('accessToken')}`
         },
         body: JSON.stringify(payment)
       })

@@ -11,7 +11,7 @@ const Advertisements = () => {
   const { data: result = [], isLoading } = useQuery({
     queryKey: ['result'],
     queryFn: async () => {
-      const res = await fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/makeAdvertise')
+      const res = await fetch('https://b612-used-products-resale-server-side-blush.vercel.app/makeAdvertise')
       const data = await res.json()
       return data
     }

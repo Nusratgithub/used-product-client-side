@@ -41,7 +41,7 @@ const router = createBrowserRouter([
       {
         path: '/category/:id',
         element: (<PrivateRoute><Category /></PrivateRoute>),
-        loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/category/${params.id}`)
+        loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/category/${params.id}`)
       },
       {
         path: '/blog',
@@ -102,7 +102,7 @@ const router = createBrowserRouter([
       },
       {
         path: '/dashboard/reportedProduct',
-        element: <AdminRoute><ReportedProduct /></AdminRoute>
+        element: <ReportedProduct />
 
       },
       {
@@ -118,7 +118,7 @@ const router = createBrowserRouter([
       {
         path: '/dashboard/payment/:id',
         element: <Payment></Payment>,
-        loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/orders/${params.id}`)
+        loader: ({ params }) => fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/orders/${params.id}`)
       }
 
     ]

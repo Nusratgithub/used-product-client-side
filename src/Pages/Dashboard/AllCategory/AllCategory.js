@@ -11,7 +11,7 @@ const AllCategory = () => {
   const { data: category = [], isLoading, refetch } = useQuery({
     queryKey: ['category'],
     queryFn: async () => {
-      const res = await fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/category')
+      const res = await fetch('https://b612-used-products-resale-server-side-blush.vercel.app/category')
       const data = await res.json()
       return data
     }
@@ -28,11 +28,11 @@ const AllCategory = () => {
     setDeletedCategory(null)
   }
   const handleCategoryDelete = categoryId => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/category/${categoryId}`, {
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/category/${categoryId}`, {
       method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      // }
     })
       .then(res => res.json())
       .then(data => {

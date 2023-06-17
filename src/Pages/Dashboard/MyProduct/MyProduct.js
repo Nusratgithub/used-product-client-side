@@ -1,12 +1,9 @@
 import React, { useState } from 'react';
 import LoadingSpinner from '../../Shared/LoadingSpinner/LoadingSpinner';
 import ConfirmationModal from '../../Shared/ConfirmationModal/ConfirmationModal'
-import { toast } from 'react-toastify';
-import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import { useEffect } from 'react';
-import axios from 'axios';
 
 
 const MyOrder = () => {
@@ -15,10 +12,10 @@ const MyOrder = () => {
   const [deletedProduct, setDeletedProduct] = useState(null)
 
   useEffect(() => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/products?email=${user?.email}`, {
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/products?email=${user?.email}`, {
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      // }
     })
       .then(res => {
         if (res.status === 401 || res.status === 403) {
@@ -39,11 +36,11 @@ const MyOrder = () => {
     setDeletedProduct(null)
   }
   const handleProductDelete = id => {
-    fetch(`https://b612-used-products-resale-server-side-zeta.vercel.app/products/${id}`, {
+    fetch(`https://b612-used-products-resale-server-side-blush.vercel.app/products/${id}`, {
       method: "DELETE",
-      headers: {
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
-      }
+      // headers: {
+      //   authorization: `Bearer ${localStorage.getItem('accessToken')}`
+      // }
     })
       .then(res => res.json())
       .then(data => {

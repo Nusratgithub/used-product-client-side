@@ -1,13 +1,11 @@
 import React, { useContext } from 'react';
 import { toast } from 'react-toastify'
-import Button from '../../Components/Button/Button';
-import SmallSpinner from '../../Components/Spinner/SmallSpinner';
 import { AuthContext } from '../../Context/AuthProvider/AuthProvider';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 const ProductBookModal = ({ productData, setProductData }) => {
   // console.log(productData);
-  const { user, loading, setLoading } = useContext(AuthContext)
+  const { user } = useContext(AuthContext)
   const { image, name, resalePrice, _id } = productData;
   const navigate = useNavigate()
 
@@ -31,11 +29,11 @@ const ProductBookModal = ({ productData, setProductData }) => {
       location,
 
     }
-    fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/orders', {
+    fetch('https://b612-used-products-resale-server-side-blush.vercel.app/orders', {
       method: "POST",
       headers: {
         'content-type': 'application/json',
-        authorization: `Bearer ${localStorage.getItem('accessToken')}`
+        // authorization: `Bearer ${localStorage.getItem('accessToken')}`
       },
       body: JSON.stringify(ordersData)
     })

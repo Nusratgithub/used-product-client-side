@@ -1,27 +1,23 @@
 import React from 'react';
 import { useContext } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { AuthContext } from '../../../Context/AuthProvider/AuthProvider';
 import Button from '../../../Components/Button/Button.jsx'
 import SmallSpinner from '../../../Components/Spinner/SmallSpinner'
 import { useForm } from 'react-hook-form';
 import { useState } from 'react';
 import { toast } from 'react-toastify';
-import useToken from '../../../Hooks/useToken';
-
 
 const SignUp = () => {
   const { register, formState: { errors }, handleSubmit } = useForm();
   const { createUser, updateUserInfo, loading, setLoading } = useContext(AuthContext);
-  const [registerError, setRegisterError] = useState('')
-  const [createdUserEmail, setCreatedUserEmail] = useState('')
-  const [token] = useToken(createdUserEmail);
+  const [registerError, setRegisterError] = useState('');
   const imageUploadApiKey = process.env.REACT_APP_IMGBB_API_KEY
   const navigate = useNavigate();
 
-  if (token) {
-    navigate('/')
-  }
+  // if (token) {
+  //   navigate('/')
+  // }
 
   const handleUserRegister = data => {
     setRegisterError('')
@@ -74,7 +70,7 @@ const SignUp = () => {
       role,
       image
     }
-    fetch('https://b612-used-products-resale-server-side-zeta.vercel.app/users', {
+    fetch('https://b612-used-products-resale-server-side-blush.vercel.app/users', {
       method: "POST",
       headers: {
         'content-type': 'application/json'
@@ -83,9 +79,7 @@ const SignUp = () => {
     })
       .then(res => res.json())
       .then(data => {
-        // console.log(data)
-        setCreatedUserEmail(email)
-
+        console.log(data)
       })
   }
 
@@ -100,7 +94,7 @@ const SignUp = () => {
           <h1 className="text-5xl text-center font-bold text-orange-600 pb-10">Sign Up</h1>
           <form onSubmit={handleSubmit(handleUserRegister)}>
             <div className="mb-6">
-              <input type="text" {...register("name", { required: true, minLength: { value: 4, message: 'Name must be 4 character or longer' } })} placeholder="Name" className="bordder-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-theme-2nd focus-visible:shadow-none" />
+              <input type="text" {...register("name", { required: true, minLength: { value: 4, message: 'Name must be 4 character or longer' } })} placeholder="Name" className="border-[#E9EDF4] w-full rounded-md border bg-[#FCFDFE] py-3 px-5 text-base text-body-color placeholder-[#ACB6BE] outline-none focus:border-theme-2nd focus-visible:shadow-none" />
               {errors.name && <p className='text-red-600 text-xs text-left' role="alert">{errors.name?.message}</p>}
             </div>
             <div className="mb-6">
