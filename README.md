@@ -1,6 +1,6 @@
 ***Furniture Resale market***
 
-Live Demo: https://peaceful-melomakarona-37420f.netlify.app
+Live Demo: https://products-resale-client-side.web.app
 
 server-side: https://github.com/Nusratgithub/used-product-server-side/tree/master
 
